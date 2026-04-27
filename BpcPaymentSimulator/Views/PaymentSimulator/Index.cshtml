@@ -1,0 +1,135 @@
+@{
+    ViewData["Title"] = "BPC Payment Simulator";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">BPC Payment Simulator</h1>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Payment Form</h2>
+                    
+                    <form method="post" action="/PaymentSimulator/ProcessPayment">
+                        <!-- Payment Method Tabs -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <button type="submit" name="paymentMethod" value="Redirect" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fas fa-arrow-right"></i> Redirect(Register)
+                                </button>
+                                <button type="submit" name="paymentMethod" value="DirectPay" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fas fa-exchange-alt"></i> Direct Pay
+                                </button>
+                                <button type="submit" name="paymentMethod" value="Binding" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fas fa-link"></i> Binding(Token)
+                                </button>
+                                <button type="submit" name="paymentMethod" value="ApplePay" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fab fa-apple"></i> Apple Pay
+                                </button>
+                                <button type="submit" name="paymentMethod" value="GooglePay" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fab fa-google"></i> Google Pay
+                                </button>
+                                <button type="submit" name="paymentMethod" value="MOTO" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fas fa-credit-card"></i> MOTO
+                                </button>
+                                <button type="submit" name="paymentMethod" value="InstantPay" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-bolt"></i> Instant Pay
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Type Buttons -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <button type="submit" name="transaction" value="Deposit" class="btn btn-outline-secondary btn-sm me-2">
+                                    <i class="fas fa-sign-in-alt"></i> Deposit
+                                </button>
+                                <button type="submit" name="transaction" value="Refund" class="btn btn-outline-secondary btn-sm me-2">
+                                    <i class="fas fa-undo"></i> Refund
+                                </button>
+                                <button type="submit" name="transaction" value="Reverse" class="btn btn-outline-secondary btn-sm me-2">
+                                    <i class="fas fa-exchange-alt"></i> Reverse
+                                </button>
+                                <button type="submit" name="transaction" value="OrderStatus" class="btn btn-outline-secondary btn-sm me-2">
+                                    <i class="fas fa-lock"></i> OrderStatus
+                                </button>
+                                <button type="submit" name="transaction" value="unBindCard" class="btn btn-outline-secondary btn-sm me-2">
+                                    <i class="fas fa-times-circle"></i> unBindCard
+                                </button>
+                                <button type="submit" name="transaction" value="BindCard" class="btn btn-outline-secondary btn-sm me-2">
+                                    <i class="fas fa-check-circle"></i> BindCard
+                                </button>
+                                <button type="submit" name="transaction" value="ExtendCard" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-arrow-right"></i> ExtendCard
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Bindings Buttons -->
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" name="bindings" value="GetBindingsID" class="btn btn-outline-info btn-sm me-2">
+                                    <i class="fas fa-id-card"></i> GetBindings ID
+                                </button>
+                                <button type="submit" name="bindings" value="GetBindingsCard" class="btn btn-outline-info btn-sm">
+                                    <i class="fas fa-credit-card"></i> GetBindings Card
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="mt-4">
+                        <a href="/" class="text-primary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-info mt-3" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+    
+    .card {
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border: none;
+    }
+    
+    .card-body {
+        padding: 40px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: #333;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .btn-outline-primary, .btn-outline-secondary, .btn-outline-info {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.75rem;
+    }
+    
+    footer {
+        margin-top: 50px;
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
+    }
+</style>
